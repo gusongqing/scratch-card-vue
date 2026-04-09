@@ -136,7 +136,7 @@ const handleCheck = async () => {
 .input-section {
   background: white;
   border-radius: 16px;
-  padding: 30px;
+  padding: 24px 20px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
@@ -339,6 +339,15 @@ h2 {
 }
 
 @media (max-width: 500px) {
+  .input-section {
+    padding: 20px 16px;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+  
   .rules-summary {
     grid-template-columns: 1fr;
   }
@@ -348,8 +357,41 @@ h2 {
     padding: 10px;
   }
   
+  .input-wrapper {
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .code-input {
+    font-size: 20px;
+    padding: 16px;
+  }
+  
+  .check-btn {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+  }
+  
   .list-grid {
     grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .rules-hint {
+    padding: 12px;
+  }
+  
+  .prize-item {
+    padding: 6px;
+  }
+  
+  .prize-code {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+  
+  .prize-amount {
+    font-size: 12px;
   }
 }
 </style>

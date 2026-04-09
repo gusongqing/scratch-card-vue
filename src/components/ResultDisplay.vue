@@ -90,7 +90,7 @@ const handleClearHistory = () => {
 .result-card {
   background: white;
   border-radius: 16px;
-  padding: 30px;
+  padding: 24px 20px;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
@@ -165,10 +165,10 @@ const handleClearHistory = () => {
 
 /* 历史记录样式 */
 .history-section {
-  margin-top: 24px;
+  margin-top: 20px;
   background: white;
   border-radius: 12px;
-  padding: 20px;
+  padding: 16px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
@@ -276,5 +276,51 @@ const handleClearHistory = () => {
 .fade-leave-to {
   opacity: 0;
   transform: translateY(20px);
+}
+
+@media (max-width: 500px) {
+  .result-card {
+    padding: 20px 16px;
+  }
+  
+  .result-icon {
+    font-size: 40px;
+  }
+  
+  .result-content h3 {
+    font-size: 20px;
+  }
+  
+  .prize-amount {
+    font-size: 28px;
+  }
+  
+  .history-section {
+    padding: 12px;
+  }
+  
+  .history-header {
+    margin-bottom: 12px;
+  }
+  
+  .history-item {
+    padding: 8px 0;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  
+  .history-info {
+    gap: 8px;
+  }
+  
+  .history-status {
+    font-size: 13px;
+  }
+  
+  .history-time {
+    font-size: 11px;
+    width: 100%;
+    text-align: right;
+  }
 }
 </style>
