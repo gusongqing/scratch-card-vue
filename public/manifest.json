@@ -2,7 +2,7 @@
   "name": "刮刮乐识别系统",
   "short_name": "刮刮乐",
   "description": "快速识别刮刮乐彩票中奖金额",
-  "start_url": "/",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#667eea",
   "theme_color": "#667eea",
