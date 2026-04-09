@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>生成PWA图标</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; text-align: center; background: #f5f5f5; }
+    .container { max-width: 600px; margin: 0 auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 4px 20px rgba(0,0,0,0.1); }
+    h1 { color: #667eea; margin-bottom: 20px; }
+    p { color: #666; margin-bottom: 30px; }
+    .icons { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin: 30px 0; }
+    .icon-item { text-align: center; }
+    canvas { border-radius: 20%; box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+    button { padding: 12px 30px; font-size: 16px; color: white; background: linear-gradient(135deg, #667eea, #764ba2); border: none; border-radius: 8px; cursor: pointer; margin: 5px; }
+    button:hover { opacity: 0.9; }
+    .note { margin-top: 30px; padding: 15px; background: #fff3cd; border-radius: 8px; color: #856404; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎰 刮刮乐PWA图标生成器</h1>
+    <p>点击下方按钮下载图标文件，然后放入 <code>public/icons/</code> 目录</p>
+    
+    <div class="icons">
+      <div class="icon-item">
+        <canvas id="icon192" width="192" height="192"></canvas>
+        <p>192x192</p>
+        <button onclick="download('icon192', 'icon-192.png')">下载</button>
+      </div>
+      <div class="icon-item">
+        <canvas id="icon512" width="512" height="512"></canvas>
+        <p>512x512</p>
+        <button onclick="download('icon512', 'icon-512.png')">下载</button>
+      </div>
+    </div>
+    
+    <button onclick="downloadAll()">📦 一键下载全部</button>
+    
+    <div class="note">
+      <strong>使用说明：</strong><br>
+      1. 点击下载按钮保存图标<br>
+      2. 将图标放入项目的 <code>public/icons/</code> 文件夹<br>
+      3. 运行 <code>npm run build</code> 构建项目
+    </div>
+  </div>
+
+  <script>
+    // 绘制图标
+    function drawIcon(canvasId) {
+      const canvas = document.getElementById(canvasId);
+      const ctx = canvas.getContext('2d');
+      const size = canvas.width;
+      
+      // 背景渐变
+      const gradient = ctx.createLinearGradient(0, 0, size, size);
+      gradient.addColorStop(0, '#667eea');
+      gradient.addColorStop(1, '#764ba2');
+      
+      // 绘制圆角矩形背景
+      const radius = size * 0.15;
+      ctx.beginPath();
+      ctx.moveTo(radius, 0);
+      ctx.lineTo(size - radius, 0);
+      ctx.quadraticCurveTo(size, 0, size, radius);
+      ctx.lineTo(size, size - radius);
+      ctx.quadraticCurveTo(size, size, size - radius, size);
+      ctx.lineTo(radius, size);
+      ctx.quadraticCurveTo(0, size, 0, size - radius);
+      ctx.lineTo(0, radius);
+      ctx.quadraticCurveTo(0, 0, radius, 0);
+      ctx.closePath();
+      ctx.fillStyle = gradient;
+      ctx.fill();
+      
+      // 绘制文字
+      ctx.fillStyle = 'white';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = `bold ${size * 0.5}px Arial, sans-serif`;
+      ctx.fillText('刮', size / 2, size / 2 + size * 0.02);
+    }
+    
+    // 下载图标
+    function download(canvasId, filename) {
+      const canvas = document.getElementById(canvasId);
+      const link = document.createElement('a');
+      link.download = filename;
+      link.href = canvas.toDataURL('image/png');
+      link.click();
+    }
+    
+    // 下载全部
+    function downloadAll() {
+      download('icon192', 'icon-192.png');
+      setTimeout(() => download('icon512', 'icon-512.png'), 100);
+    }
+    
+    // 初始化绘制
+    drawIcon('icon192');
+    drawIcon('icon512');
+  </script>
+</body>
+</html>
