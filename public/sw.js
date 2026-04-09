@@ -1,8 +1,8 @@
 const CACHE_NAME = 'scratch-card-v1'
 const urlsToCache = [
-  '/',
-  '/index.html',
-  '/manifest.json'
+  './',
+  './index.html',
+  './manifest.json'
 ]
 
 // 安装 Service Worker
